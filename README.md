@@ -12,6 +12,6 @@ El proyecto está pensado como un microservicio que se podría integrar a servic
   
 Este proyecto será abordado con el lenguaje de programación Python.  
 Se usará un entorno virtual para el desarrollo utilizando `virtualenv`.  
-La idea es usar una base de datos para almacenar los distintos elementos que aparecen en nuestra porra (usuarios, resultados, jornadas ...).  
+La idea es usar una base de datos para almacenar los distintos elementos que aparecen en nuestra porra (usuarios, resultados, jornadas ... ).  
 Para el desarrollo basado en test se implementarán pruebas unitarias en python del framework incluido en la librería estándar `unittest`.
 Se tiene pensado utilizar Travis CI, ya que nos permite pasar los test y además incorporarlo con GitHub.
