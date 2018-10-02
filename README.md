@@ -1,4 +1,4 @@
-[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)    [![Build Status](https://travis-ci.com/iMiguel10/Proyecto-IV-Porra-Deportiva-.svg?branch=master)](https://travis-ci.com/iMiguel10/Proyecto-IV-Porra-Deportiva-)
 
 # Proyecto IV (Porra Deportiva)
 Repositorio para la asignatura de 4º curso, infraestructura virtual (IV), del grado de ingeniería informática (GII) de la universidad de granada (UGR). 
@@ -10,8 +10,9 @@ El proyecto está pensado como un microservicio que se podría integrar a servic
 
 ## Herramientas
   
-Este proyecto será abordado con el lenguaje de programación Python.  
-Se usará un entorno virtual para el desarrollo utilizando `virtualenv`.  
-La idea es usar una base de datos para almacenar los distintos elementos que aparecen en nuestra porra (usuarios, resultados, jornadas ... ).  
-Para el desarrollo basado en test se implementarán pruebas unitarias en python del framework incluido en la librería estándar `unittest`.
+* Este proyecto será abordado con el lenguaje de programación Python.  
+* Se usará el micro-framework Flask para el desarrollo del microserservicio, ya que parece ser una buena herramienta para iniciarse en el lenguaje de programación que usaremos.
+*  Se usará un entorno virtual para el desarrollo utilizando `virtualenv`.  
+* La idea es usar una base de datos, como es MySQL, para almacenar los distintos elementos que aparecen en nuestra porra (usuarios, resultados, jornadas ... ),pero  en principio se usará almacenamiento estático en ficheros JSON.  
+* Para el desarrollo basado en test se implementarán pruebas unitarias en python del framework incluido en la librería estándar `unittest`.
 Se tiene pensado utilizar Travis CI, ya que nos permite pasar los test y además incorporarlo con GitHub.
