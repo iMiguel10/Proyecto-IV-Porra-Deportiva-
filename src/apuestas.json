@@ -1,0 +1,30 @@
+[
+  {
+    "usuario": "luis14",
+    "apuesta": [
+      {
+        "Real Madrid FC - FC Barcelona": "4-0"
+      },
+      {
+        "Atlético de Madrid - Betis": "1-1"
+      },
+      {
+        "Sevilla FC - Athletic de Bilbao": "3-2"
+      }
+    ]
+  },
+  {
+    "usuario": "juanjuanito",
+    "apuesta": [
+      {
+        "Real Madrid FC - FC Barcelona": "1-1"
+      },
+      {
+        "Atlético de Madrid - Betis": "0-2"
+      },
+      {
+        "Sevilla FC - Athletic de Bilbao": "3-3"
+      }
+    ]
+  }
+]

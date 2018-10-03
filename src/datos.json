@@ -1,0 +1,44 @@
+[
+  {
+    "numero": "1",
+    "partidos": [
+      {
+        "equipos": "Real Madrid FC - FC Barcelona"
+      },
+      {
+        "equipos": "Atlético de Madrid - Betis"
+      },
+      {
+        "equipos": "Sevilla FC - Athletic de Bilbao"
+      }
+    ]
+  },
+  {
+    "numero": "2",
+    "partidos": [
+      {
+        "equipos": "Real Madrid FC - Sevilla FC"
+      },
+      {
+        "equipos": "Atlético de Madrid - FC Barcelona"
+      },
+      {
+        "equipos": "Leganés - Betis"
+      }
+    ]
+  },
+  {
+    "numero": "3",
+    "partidos": [
+      {
+        "equipos": "Real Madrid FC - Betis"
+      },
+      {
+        "equipos": "Atlético de Madrid - Sevilla"
+      },
+      {
+        "equipos": "FC Barcelona - Real Sociedad"
+      }
+    ]
+  }
+]
