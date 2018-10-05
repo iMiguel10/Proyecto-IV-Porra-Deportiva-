@@ -52,7 +52,7 @@ class FuncionesBasicas:
 			try:
 				jornada=abs(jornada)
 				self.data[jornada-1]["partidos"].append({'equipos':partido})
-				with open('prueba.json', 'w') as file:
+				with open('datos.json', 'w') as file:
 					json.dump(self.data, file)
 				return True
 			except:
