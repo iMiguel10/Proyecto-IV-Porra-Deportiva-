@@ -9,12 +9,12 @@ class FuncionesBasicasTest(unittest.TestCase):
 
     def testPartidos(self):
         self.assertEqual(self.test.getPartidos("Cadena"),False,"La jornada debe ser entero")
-        self.assertEqual(self.test.getPartidos(2),[unicode('Real Madrid FC - Sevilla FC',"utf-8"),unicode('Atlético de Madrid - FC Barcelona',"utf-8"),unicode('Leganés - Betis',"utf-8")],"La jornada es correcta")
+        self.assertEqual(self.test.getPartidos(2),[str('Real Madrid FC - Sevilla FC'),str('Atlético de Madrid - FC Barcelona'),str('Leganés - Betis')],"La jornada es correcta")
 
     def testPartido(self):
         self.assertEqual(self.test.getPartido(0,"cadena"),False,"La jornada debe ser entero")
         self.assertEqual(self.test.getPartido("cadena",3),False,"El partido debe ser entero")
-        self.assertEqual(self.test.getPartido(1,2),unicode('Atlético de Madrid - FC Barcelona',"utf-8"),"El partido es correcto")
+        self.assertEqual(self.test.getPartido(1,2),str('Atlético de Madrid - FC Barcelona'),"El partido es correcto")
 
     def testApuestas(self):
         self.assertEqual(self.test.getApuestas("cadena"),False,"Usuario no encontrado")
