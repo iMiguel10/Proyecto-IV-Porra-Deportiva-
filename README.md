@@ -16,3 +16,9 @@ El proyecto está pensado como un microservicio que se podría integrar a servic
 * La idea es usar una base de datos, como es MySQL, para almacenar los distintos elementos que aparecen en nuestra porra (usuarios, resultados, jornadas ... ),pero  en principio se usará almacenamiento estático en ficheros JSON.  
 * Para el desarrollo basado en test se implementarán pruebas unitarias en python del framework incluido en la librería estándar `unittest`.
 Se tiene pensado utilizar Travis CI, ya que nos permite pasar los test y además incorporarlo con GitHub.
+
+[**Documentación Herramientas**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/doc/Info-herramientas.md)
+
+## Integración continua  (Travis-CI)
+
+[**Documentación Integración Continua**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/doc/Integ-Cont-Conf.md)
