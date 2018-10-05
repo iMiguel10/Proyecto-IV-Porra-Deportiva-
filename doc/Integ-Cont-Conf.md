@@ -26,4 +26,4 @@ Para que Travis funcione correctamente es necesario añadir al repositorio un ar
 >>  - make test
 
 ### Ejemplo:
-![Ejemplo Travis]()
+![Ejemplo Travis](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/Ejemplo-Travis.PNG)
