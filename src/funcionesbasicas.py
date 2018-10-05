@@ -12,6 +12,7 @@ class FuncionesBasicas:
 		with open('datos.json', 'r') as file:
 			self.data = json.load(file)
 
+	# Función que nos develve una lista con los partidos de una jornada
 	def getPartidos(self,jornada):	
 		partidos = []
 		try:
@@ -24,7 +25,7 @@ class FuncionesBasicas:
 
 		return partidos
 
-
+	# Función que nos develve un partido de una jornada
 	def getPartido(self, partido, jornada):
 		partidos = self.getPartidos(jornada)
 		if partidos:
@@ -34,6 +35,7 @@ class FuncionesBasicas:
 				return False
 		else: return False
 
+	# Función que nos devuelve las apuestas de un usuario
 	def getApuestas(self, usuario):
 		apuestas = []
 		for i in self.ap:
@@ -42,3 +44,18 @@ class FuncionesBasicas:
 					apuestas.append(j)
 		if not apuestas: apuestas = False 
 		return apuestas
+
+	# Función que crea un partido en una jornada
+	def setPartido(self, jornada, partido):
+		#print(len(self.data))
+		if len(self.data) >= abs(jornada):
+			try:
+				jornada=abs(jornada)
+				self.data[jornada-1]["partidos"].append({'equipos':partido})
+				with open('prueba.json', 'w') as file:
+					json.dump(self.data, file)
+				return True
+			except:
+				return False
+		else:
+			return False
