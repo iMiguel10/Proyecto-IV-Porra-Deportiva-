@@ -48,6 +48,7 @@ class FuncionesBasicas:
 	# Función que crea un partido en una jornada
 	def setPartido(self, jornada, partido):
 		#print(len(self.data))
+		if type(jornada) != int: return False
 		if len(self.data) >= abs(jornada):
 			try:
 				jornada=abs(jornada)
