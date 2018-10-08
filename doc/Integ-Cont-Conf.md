@@ -27,3 +27,12 @@ Para que Travis funcione correctamente es necesario añadir al repositorio un ar
 
 ### Ejemplo:
 ![Ejemplo Travis](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/Ejemplo-Travis.PNG)
+
+
+### Test
+Los [test](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/test.py) que se han escrito son para comprobar la funcionalidad de nuestra clase básica [FuncionalidadBasica](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/funcionesbasicas.py).
+
++ **testPartidos:** Comprueba que la lista que nos devuelve de los partidos de una jornada concreta es correcta.
++ **testPartido:** Comprueba que el partido de una jornada sea el correcto.
++ **testApuestas:** Comprueba que las apuestas de un usuario son las asociadas al mismo
++ **testSPartidos:**  Comprueba que se añade un partido correctamente a la jornada.
