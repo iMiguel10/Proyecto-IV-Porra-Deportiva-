@@ -3,13 +3,11 @@
 
 import json
 
-class FuncionesBasicas:
+class Partidos:
 
 	def __init__(self):
-		with open('apuestas.json', 'r') as file:
-			self.ap = json.load(file)
 
-		with open('datos.json', 'r') as file:
+		with open('../src/datos.json', 'r') as file:
 			self.data = json.load(file)
 
 	# Función que nos develve una lista con los partidos de una jornada
@@ -35,6 +33,44 @@ class FuncionesBasicas:
 				return False
 		else: return False
 
+	# Función que crea un partido en una jornada
+	def setPartido(self, jornada, partido):
+		#print(len(self.data))
+		if type(jornada) != int: return False
+		if len(self.data) >= abs(jornada):
+			try:
+				jornada=abs(jornada)
+				self.data[jornada-1]["partidos"].append({'equipos':partido})
+				with open('../src/datos.json', 'w') as file:
+					json.dump(self.data, file)
+				return True
+			except:
+				return False
+		else:
+			return False
+
+	# Función que borra el último partido de una jornada concreta
+	def delPartido(self, jornada):
+		#print(len(self.data))
+		if type(jornada) != int: return False
+		if len(self.data) >= abs(jornada):
+			try:
+				jornada=abs(jornada)
+				self.data[jornada-1]["partidos"].pop(len(self.data[jornada-1]["partidos"])-1)
+				with open('../src/datos.json', 'w') as file:
+					json.dump(self.data, file)
+				return True
+			except:
+				return False
+		else:
+			return False
+
+class Apuestas:
+
+	def __init__(self):
+		with open('../src/apuestas.json', 'r') as file:
+			self.ap = json.load(file)
+
 	# Función que nos devuelve las apuestas de un usuario
 	def getApuestas(self, usuario):
 		apuestas = []
@@ -44,19 +80,3 @@ class FuncionesBasicas:
 					apuestas.append(j)
 		if not apuestas: apuestas = False 
 		return apuestas
-
-	# Función que crea un partido en una jornada
-	def setPartido(self, jornada, partido):
-		#print(len(self.data))
-		if type(jornada) != int: return False
-		if len(self.data) >= abs(jornada):
-			try:
-				jornada=abs(jornada)
-				self.data[jornada-1]["partidos"].append({'equipos':partido})
-				with open('datos.json', 'w') as file:
-					json.dump(self.data, file)
-				return True
-			except:
-				return False
-		else:
-			return False

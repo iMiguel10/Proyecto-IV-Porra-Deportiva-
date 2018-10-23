@@ -21,7 +21,7 @@ Se tiene pensado utilizar Travis CI, ya que nos permite pasar los test y además
 
 ## Integración continua  (Travis-CI)
 
-La clase que se va a testear es [**funcionalidadesbasicas.py**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/funcionesbasicas.py), esta clase incluye funciones como son ver todos los paridos de una jornada, ver el partido concreto de una jornada concreta, ver las apuestas de un usuario, y añadir un partido a una jornada.  
+La clase que se va a testear es [**funcionalidadesbasicas.py**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/funcionesbasicas.py), esta clase incluye funciones como son ver todos los partidos de una jornada, ver el partido concreto de una jornada concreta, ver las apuestas de un usuario, y añadir un partido a una jornada.  
 El uso que tendría esta clase es mostrar y añadir partidos o jornadas completas dentro de la aplicación de apuestas.
 
 Por otro lado para **instalarla y testearla** es necesario instalar los [*requirements.txt*](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/requirements.txt) con *pip* y descargar los archivos de código y almacenamiento ( archivos de la carpeta [src](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/tree/master/src) ), y para testearla basta con ejecutar la clase de test [*test.py*](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/test.py) tras la instalación como se puede ver en la documentación del enlace de abajo.
