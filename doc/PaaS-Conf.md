@@ -4,13 +4,16 @@
 
 Para hacer el despliegue en [Heroku](https://www.heroku.com/) el PaaS elegido ha sido necesario:
 
-### Registrarse en [Heroku](https://www.heroku.com/)
-### Crear la App
+### 1. Registrarse en [Heroku](https://www.heroku.com/)
+---
+
+### 2. Crear la App
+---
 Una vez logueados en [Heroku](https://www.heroku.com/) creamos una nueva app, con el nombre que deseemos, en mi caso ha sido **porra-deportiva**.
 
 ![Crear App](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/Heroku-1.PNG)
 
-### 1. Crear Procfile
+### 3. Crear Procfile
 ---
 Para el despliegue es necesario crear un archivo con los Dynos que se llame **Procfile** en nuestro repositorio.
 
@@ -20,7 +23,7 @@ Para el despliegue es necesario crear un archivo con los Dynos que se llame **Pr
 
 **NOTA:** Es necesario instalar gnunicorn -- `pip install gunicorn` 
 
-### 2. Asociar GitHub con Heroku + Despliegue Automático
+### 4. Asociar GitHub con Heroku + Despliegue Automático
 ---
 * Creada ya, vamos a Deploy.
 * En Deployment method seleccionamos GitHub.
@@ -29,7 +32,7 @@ Para el despliegue es necesario crear un archivo con los Dynos que se llame **Pr
 
 ![Conf. App](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/Heroku-2.PNG)
 
-### 3. Hacer el primer despliegue
+### 5. Hacer el primer despliegue
 ---
 
 Para hacer el primer despliegue sin salirnos de Deploy y con lo anterior realizado le damos a **Deploy Branch.**
@@ -39,7 +42,7 @@ También podemos ver que tenemos la aplicación en la línea de comandos si tene
 
 ![Heroku App](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/Heroku-3.PNG)
 
-### 4. Ejemplos
+### 6. Ejemplos
 ---
 
 https://porra-deportiva.herokuapp.com/  --> Status: OK.  
