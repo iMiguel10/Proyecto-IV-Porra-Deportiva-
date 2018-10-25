@@ -26,4 +26,22 @@ El uso que tendría esta clase es mostrar y añadir partidos o jornadas completa
 
 Por otro lado para **instalarla y testearla** es necesario instalar los [*requirements.txt*](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/requirements.txt) con *pip* y descargar los archivos de código y almacenamiento ( archivos de la carpeta [src](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/tree/master/src) ), y para testearla basta con ejecutar la clase de test [*test.py*](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/test.py) tras la instalación como se puede ver en la documentación del enlace de abajo.
 
-[**Documentación Integración Continua**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/doc/Integ-Cont-Conf.md)
+[**Documentación Integración Contínua**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/doc/Integ-Cont-Conf.md)
+
+## Configuración de un PaaS  (Heroku)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+Para hacer que nuestro microservicio comience a funcionar se ha elegido el PasS Heroku.  
+Los motivos por los que se ha elegido han sido varios:
+
+* Es gratis.
+* Fácil de manejar.
+* Permite una rápida puesta en marcha.
+* Permite la integración con GitHub y Travis-CLI.
+
+**Despliegue:** https://porra-deportiva.herokuapp.com/ 
+
+*Nota: Se intentará montar en Azure Web services*
+
+[**Documentación PaaS**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/doc/PaaS-Conf.md)
