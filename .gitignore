@@ -40,3 +40,14 @@ m4/ltsugar.m4
 m4/ltversion.m4
 m4/lt~obsolete.m4
 autom4te.cache
+
+# Archivos del virtual env
+
+env/
+env/*
+
+# Archivos de python
+
+__pycache__/
+__pycache__/*
+*.pyc
