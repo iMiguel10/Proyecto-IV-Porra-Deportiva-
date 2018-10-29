@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def inicio():
-	return jsonify(status="OK")
+	return jsonify(status="Ok")
 
 @app.route('/jornada/<n>')
 def partidos(n):
