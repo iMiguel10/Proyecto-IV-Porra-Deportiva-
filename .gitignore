@@ -51,3 +51,6 @@ env/*
 __pycache__/
 __pycache__/*
 *.pyc
+
+# Archivo de datos
+src/datos.json
