@@ -5,6 +5,10 @@
 Para hacer el despliegue en [Heroku](https://www.heroku.com/) el PaaS elegido ha sido necesario:
 
 ### 1. Registrarse en [Heroku](https://www.heroku.com/)
+
+**Nota:** Para poner correctamente el botón de [Heroku](https://www.heroku.com/) ha sido necesario crear un archivo  [app.json](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/app.json) con datos de la aplicación.
+
+
 ---
 
 ### 2. Crear la App
