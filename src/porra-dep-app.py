@@ -25,10 +25,6 @@ def apuesta(usuario):
 	datos=p.getApuestas(usuario)
 	return jsonify(apuestas=datos)
 
-@app.errorhandler(404)
-def page_not_found(error):
-    return 'error HTTP 404, not found'
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
