@@ -53,4 +53,4 @@ __pycache__/*
 *.pyc
 
 # Archivo de datos
-src/datos.json
+datos.json
