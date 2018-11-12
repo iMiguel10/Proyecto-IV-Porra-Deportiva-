@@ -19,13 +19,13 @@ Una vez logueados en [Heroku](https://www.heroku.com/) creamos una nueva app, co
 
 ### 3. Crear Procfile
 ---
-Para el despliegue es necesario crear un archivo con los Dynos que se llame **Procfile** en nuestro repositorio.
+Para el despliegue es necesario crear un archivo que se llame **Procfile** en nuestro repositorio, este fichero especifica los comandos que se ejecutan por la aplicación de Dynos.
 
 >> // Mi Archivo Procfile  
 >> web: cd src && gunicorn porra-dep-app:app --log-file -  
->> worker: cd src && python porra-dep-app.py
 
-**NOTA:** Es necesario instalar gnunicorn -- `pip install gunicorn` 
+**NOTA:** Es necesario instalar gnunicorn -- `pip install gunicorn`.  
+**NOTA:** Información de [Gunicorn](https://www.pythoniza.me/gunicorn/)
 
 ### 4. Asociar GitHub con Heroku + Despliegue Automático
 ---
