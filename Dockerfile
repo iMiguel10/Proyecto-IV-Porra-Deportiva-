@@ -9,6 +9,6 @@ COPY . .
 
 WORKDIR src/
 
-EXPOSE 443
-CMD ["gunicorn", "-b", "0.0.0.0:443", "porra-dep-app:app"]
+EXPOSE 80
+CMD ["gunicorn", "-b", "0.0.0.0:80", "porra-dep-app:app"]
 
