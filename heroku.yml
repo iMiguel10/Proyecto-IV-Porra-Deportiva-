@@ -1,6 +1,6 @@
 build:
   docker:
     web: Dockerfile
-  run:
-    web: gunicorn porra-dep-app:app --log-file -
+run:
+  web: gunicorn porra-dep-app:app --log-file -
 
