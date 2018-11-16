@@ -10,7 +10,7 @@ def inicio():
 
 # Ruta para el hito 4 (Contenedor Docker)
 @app.route('/status') 
-def inicio():
+def status():
 	return jsonify(status="OK")
 
 @app.route('/jornada/<n>')
