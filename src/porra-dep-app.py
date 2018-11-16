@@ -3,9 +3,15 @@ import funcionesbasicas
 
 app = Flask(__name__)
 
-@app.route('/')
+# Ruta despliegue del servicio
+@app.route('/') 
 def inicio():
-	return jsonify(status="Ok")
+	return jsonify(status="OK")
+
+# Ruta para el hito 4 (Contenedor Docker)
+@app.route('/status') 
+def inicio():
+	return jsonify(status="OK")
 
 @app.route('/jornada/<n>')
 def partidos(n):
