@@ -42,6 +42,18 @@ Los motivos por los que se ha elegido han sido varios:
 
 **Despliegue:** https://porra-deportiva.herokuapp.com/ 
 
-*Nota: Se intentará montar en Azure Web services*
-
 [**Documentación PaaS**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/doc/PaaS-Conf.md)
+
+## Configuración de un entorno de pruebas usando contenedores (Docker + Heroku)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+Para la creación y uso de este entorno de pruebas, se han usado los contenedores [Docker](https://www.docker.com/), para el despliegue del contenedor se ha usado [Heroku](https://www.heroku.com/), y además la publicación de la imagen en [DockerHub](https://hub.docker.com/).
+
+La URL del despliegue de la imagen en DockerHub es https://hub.docker.com/r/imiguel10/proyecto-iv-porra-deportiva/ .  
+El entorno se puede descargar con una sola orden de DockerHub:  `docker run -it imiguel10/proyecto-iv-porra-deportiva`.
+
+
+**Contenedor:** https://container-porra-dep.herokuapp.com/
+
+[**Documentación Docker**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/doc/Docker-Conf.md)
