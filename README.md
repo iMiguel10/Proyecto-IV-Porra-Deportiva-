@@ -48,7 +48,7 @@ Los motivos por los que se ha elegido han sido varios:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-**Contenedor:** https://container-porra-dep.herokuapp.com/
+**Contenedor:** https://container-porra-dep.herokuapp.com/status
 
 Para la creación y uso de este entorno de pruebas, se han usado los contenedores [Docker](https://www.docker.com/), para el despliegue del contenedor se ha usado [Heroku](https://www.heroku.com/), y además la publicación de la imagen en [DockerHub](https://hub.docker.com/).
 
