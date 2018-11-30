@@ -5,7 +5,7 @@ MAINTAINER Miguel imiguel10@correo.ugr.es
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY src/ src/
 
 WORKDIR src/
 
