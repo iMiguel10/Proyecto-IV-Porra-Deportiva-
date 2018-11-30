@@ -30,7 +30,6 @@ Por otro lado para **instalarla y testearla** es necesario instalar los [*requir
 
 ## Configuración de un PaaS  (Heroku)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Para hacer que nuestro microservicio comience a funcionar se ha elegido el PasS Heroku.  
 Los motivos por los que se ha elegido han sido varios:
@@ -45,8 +44,6 @@ Los motivos por los que se ha elegido han sido varios:
 [**Documentación PaaS**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/doc/PaaS-Conf.md)
 
 ## Configuración de un entorno de pruebas usando contenedores (Docker + Heroku)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 **Contenedor:** https://container-porra-dep.herokuapp.com/status
 

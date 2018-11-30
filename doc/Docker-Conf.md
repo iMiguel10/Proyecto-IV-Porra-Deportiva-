@@ -1,6 +1,6 @@
 ## Configuración de Docker
 ---
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 
 Para la configuración del entorno de pruebas se han llevado a cabo varias tareas:
 

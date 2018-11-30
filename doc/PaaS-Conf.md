@@ -1,6 +1,5 @@
 ## Configuración de un PaaS  (Heroku)
 ---
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Para hacer el despliegue en [Heroku](https://www.heroku.com/) el PaaS elegido ha sido necesario:
 
