@@ -36,7 +36,7 @@ COPY requirements.txt ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY src/ src/
 
 WORKDIR src/
 
@@ -48,9 +48,9 @@ CMD ["gunicorn", "-b", "0.0.0.0:80", "porra-dep-app:app"]
 
 En el podemos ver:  
 
-+ **FROM:** Imagen usada por nuestro contenedor, en nuestro caso una de Python 3.
++ **FROM:** Imagen usada por nuestro contenedor, en nuestro caso una de Python 3, ya que nuestro servicio está desarrollado en Python, y además se ha elegido esa imagen porque, a pesar de ser grande, es la única que proporciona todos los requisitos para la instalación de mis requirements.
 + **MAINTAINER:** Datos del desarrollador del contenedor.
-+ **COPY:** En el primero copiamos el requirements para a continuación instalarlo, y en el segundo se copian todos los archivos de la aplicación.
++ **COPY:** En el primero copiamos el requirements para a continuación instalarlo, y en el segundo se copian los archivos de código del servicio, que están alojados en la carpeta src/.
 + **RUN:** Comando que ejecuta el contenedor al compilarlo.
 + **WORKDIR:** Comando que nos situará en el directorio de trabajo dentro del contenedor.
 + **EXPOSE:** Asigna el puerto que usará el contenedor.
@@ -65,7 +65,7 @@ En el podemos ver:
 ---
 Para el despliegue es necesario crear un archivo **heroku.yml** en nuestro repositorio, que nos permitirá que [Heroku](https://www.heroku.com/) cree la imagen a partir del Dockerfile y ejecute la orden necesaria para que el servicio web se ponga en fucnionamiento.
 
-**Mi Archivo [heroku.yml](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/heroku.yml)**  
+**Mi archivo [heroku.yml](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/heroku.yml)**  
 
 ~~~
 
@@ -73,7 +73,7 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn porra-dep-app:app --log-file -
+  web: gunicorn porra-dep-app:app 
 
 ~~~
 
@@ -86,6 +86,8 @@ Aquí podemos ver que tenemos 2 partes, la primara para que Heroku compile la im
 ---
 
 Para la publicación de la imagen en DockerHub se ha creado una compilación automática a partir de este repositorio de GitHub, de manera que si se hiciese algún cambio en el Dockerfile la imagen quede actualizada automáticamente.
+
+![DockerHub](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/DockerHub-Auto.PNG)
 
 [Imagen en DockerHub](https://hub.docker.com/r/imiguel10/proyecto-iv-porra-deportiva/)
 
