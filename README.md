@@ -45,7 +45,7 @@ Los motivos por los que se ha elegido han sido varios:
 
 ## Configuración de un entorno de pruebas usando contenedores (Docker + Heroku)
 
-**Contenedor:** https://container-porra-dep.herokuapp.com/status
+**Contenedor:** https://container-porra-dep.herokuapp.com
 
 Para la creación y uso de este entorno de pruebas, se han usado los contenedores [Docker](https://www.docker.com/), para el despliegue del contenedor se ha usado [Heroku](https://www.heroku.com/), y además la publicación de la imagen en [DockerHub](https://hub.docker.com/).
 
