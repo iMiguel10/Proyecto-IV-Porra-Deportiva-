@@ -2,13 +2,23 @@
 # -*- coding: utf-8 -*-
 
 import json
+#import pymongo
 
 class Partidos:
 
 	def __init__(self):
 
+		# Archivos JSON
 		with open('../src/datos.json', 'r') as file:
 			self.data = json.load(file)
+
+		"""
+		# BD Mongo
+		client = pymongo.MongoClient()
+		db = client.porra         # base de datos
+		self.jornadas = db.jornadas    # colección
+		self.apuestas = db.apuestas    # colección
+		"""
 
 	# Función que nos develve una lista con los partidos de una jornada
 	def getPartidos(self,jornada):	
@@ -16,11 +26,18 @@ class Partidos:
 		try:
 			jornada = abs(int(jornada))
 			# print(f"Jornada {jornada}")
+		
 			for i in self.data[jornada-1]["partidos"]:
 				partidos.append(i["equipos"])
+		
+			"""
+			# BD Mongo
+			j = self.jornadas.find({"numero":jornada})
+			partidos = j["partidos"]
+			"""
 		except:
 			partidos = False
-
+		
 		return partidos
 
 	# Función que nos develve un partido de una jornada
