@@ -49,12 +49,12 @@ CMD ["gunicorn", "-b", "0.0.0.0:80", "porra-dep-app:app"]
 En el podemos ver:  
 
 + **FROM:** Imagen usada por nuestro contenedor, en nuestro caso una de Python 3, ya que nuestro servicio está desarrollado en Python, y además se ha elegido esa imagen porque, a pesar de ser grande, es la única que proporciona todos los requisitos para la instalación de mis requirements.
-+ **MAINTAINER:** Datos del desarrollador del contenedor.
++ **MAINTAINER:** Datos del desarrollador del contenedor, en este caso los mios.
 + **COPY:** En el primero copiamos el requirements para a continuación instalarlo, y en el segundo se copian los archivos de código del servicio, que están alojados en la carpeta src/.
-+ **RUN:** Comando que ejecuta el contenedor al compilarlo.
-+ **WORKDIR:** Comando que nos situará en el directorio de trabajo dentro del contenedor.
-+ **EXPOSE:** Asigna el puerto que usará el contenedor.
-+ **CMD:** Comando que se ejecutará cuando empiece a correr nuestra imagen.
++ **RUN:** Comando que ejecuta el contenedor al compilarlo, que aquí usaremos para instalar nuestros requirements.
++ **WORKDIR:** Comando que nos situará en el directorio de trabajo dentro del contenedor, en mi caso me llevará a la carpeta src que es dónde están alojados los archivos del servicio.
++ **EXPOSE:** Asigna el puerto que usará el contenedor, en nuestro caso al ser un servicio web le asignaremos el puerto 80.
++ **CMD:** Comando que se ejecutará cuando empiece a correr nuestra imagen, que es el mismo que se ha usado en heroku.yml para el despliegue del contenedor y en el procfile para el despliegue de la aplicación, ambos en Heroku.
 
 **Ordenes usadas en local para la compilación y ejecución:**  
 `docker build -t my-python-app .`  # Compilación.  
