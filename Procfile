@@ -1,1 +1,1 @@
-web: cd src && gunicorn porra-dep-app:app --log-file -
+web: cd src && gunicorn porradepapp:app --log-file -

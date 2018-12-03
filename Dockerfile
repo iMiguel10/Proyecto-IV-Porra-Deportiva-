@@ -10,5 +10,5 @@ COPY src/ src/
 WORKDIR src/
 
 EXPOSE 80
-CMD ["gunicorn", "-b", "0.0.0.0:80", "porra-dep-app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:80", "porradepapp:app"]
 

@@ -2,5 +2,5 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn porra-dep-app:app
+  web: gunicorn porradepapp:app
 

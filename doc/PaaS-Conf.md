@@ -5,9 +5,6 @@ Para hacer el despliegue en [Heroku](https://www.heroku.com/) el PaaS elegido ha
 
 ### 1. Registrarse en [Heroku](https://www.heroku.com/)
 
-**Nota:** Para poner correctamente el botón de [Heroku](https://www.heroku.com/) ha sido necesario crear un archivo  [app.json](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/app.json) con datos de la aplicación.
-
-
 ---
 
 ### 2. Crear la App
@@ -21,7 +18,7 @@ Una vez logueados en [Heroku](https://www.heroku.com/) creamos una nueva app, co
 Para el despliegue es necesario crear un archivo que se llame **Procfile** en nuestro repositorio, este fichero especifica los comandos que se ejecutan por la aplicación de Dynos.
 
 >> // Mi Archivo Procfile  
->> web: cd src && gunicorn porra-dep-app:app --log-file -  
+>> web: cd src && gunicorn porradepapp:app --log-file -  
 
 **NOTA:** Es necesario instalar gnunicorn -- `pip install gunicorn`.  
 **NOTA:** Información de [Gunicorn](https://www.pythoniza.me/gunicorn/)

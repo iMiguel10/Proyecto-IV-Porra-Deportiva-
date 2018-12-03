@@ -30,7 +30,7 @@ Para que Travis funcione correctamente es necesario añadir al repositorio un ar
 
 
 ### Test
-Los [test](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/test.py) que se han escrito son para comprobar la funcionalidad de nuestra clase básica [FuncionalidadBasica](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/funcionesbasicas.py).
+Los [test](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/test/test.py) que se han escrito son para comprobar la funcionalidad de nuestra clase básica [FuncionalidadBasica](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/funcionesbasicas.py).
 
 + **testPartidos:** Comprueba que la lista que nos devuelve de los partidos de una jornada concreta es correcta.
 + **testPartido:** Comprueba que el partido de una jornada sea el correcto.
