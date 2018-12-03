@@ -44,6 +44,5 @@ def apuesta(usuario):
 	datos=p.getApuestas(usuario)
 	return jsonify(apuestas=datos)
 
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
