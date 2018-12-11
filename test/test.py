@@ -9,8 +9,8 @@ import funcionesbasicasDB
 
 class FuncionesBasicasTest(unittest.TestCase):
 
-    testP = funcionesbasicas.Partidos()
-    testA = funcionesbasicas.Apuestas()
+    testP = funcionesbasicasDB.Partidos()
+    testA = funcionesbasicasDB.Apuestas()
 
     # TEST Partidos ----------------------------------- #
     def testPartidos(self):
