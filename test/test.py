@@ -4,7 +4,7 @@ import sys
 sys.path.append('../src/')
 
 import unittest
-import funcionesbasicas
+import funcionesbasicasDB
 
 
 class FuncionesBasicasTest(unittest.TestCase):
