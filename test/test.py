@@ -12,6 +12,7 @@ class FuncionesBasicasTest(unittest.TestCase):
     testP = funcionesbasicasDB.Partidos()
     testA = funcionesbasicasDB.Apuestas()
 
+    # Se añadirán nuevos
     # TEST Partidos ----------------------------------- #
     def testPartidos(self):
         self.assertEqual(self.testP.getPartidos("Cadena"),False,"La jornada debe ser entero")
@@ -32,7 +33,7 @@ class FuncionesBasicasTest(unittest.TestCase):
         self.assertEqual(self.testP.delPartido(3),True,"El partido borrado correctamente")
         self.assertEqual(self.testP.delPartido(32),False,"El partido no borrado, jornada no existe")
 
-
+    # Se añadirán nuevos
     # TEST Apuestas ----------------------------------- #
     def testApuestas(self):
         self.assertEqual(self.testA.getApuestas("cadena"),False,"Usuario no encontrado")
