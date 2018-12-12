@@ -32,8 +32,8 @@ def test_status(client):
 
 def test_jornada(client):
     rv = client.get('/jornada/1')
-    rv2 = client.delete('/jornada/1')
-    rv3 = client.put('/jornada/1', json={'partido': 'Almeria - Granada',})
+    rv2 = client.put('/jornada/1', json={'partido': 'Almeria - Granada',})
+    rv3 = client.delete('/jornada/1')
     json_data = rv.get_json()
     json_data2 = rv2.get_json()
     json_data3 = rv3.get_json()
