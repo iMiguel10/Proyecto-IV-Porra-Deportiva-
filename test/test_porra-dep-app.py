@@ -48,5 +48,20 @@ def test_partido(client):
 
 def test_apuesta(client):
     rv = client.get('/apuesta/luis14')
+    rv2 = client.post('/apuesta/nuevoUsuario', json={'partido': 'Almeria - Granada','resultado':'3-1'})
+    rv3 = client.delete('/apuesta/nuevoUsuario')
     json_data = rv.get_json()
+    json_data2 = rv2.get_json()
+    json_data3 = rv3.get_json()
     assert json_data['apuestas'] != False
+    assert json_data2['apuestas'] == True
+    assert json_data3['apuestas'] == True
+
+def test_apostantes(client):
+    rv = client.get('/apostantes')
+    rv2 = client.delete('/apostante/nuevoUsuario')
+    json_data = rv.get_json()
+    json_data2 = rv2.get_json()
+    assert json_data['apostantes'] != None
+    assert json_data2['apostante'] == True
+
