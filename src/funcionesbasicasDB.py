@@ -97,7 +97,7 @@ class Apuestas:
 
 
 	# Función que nos devuelve las apuestas de un usuario
-	def getApostantes(self,):
+	def getApostantes(self):
 		
 		usuarios = []
 		u = self.apuestas.find()
