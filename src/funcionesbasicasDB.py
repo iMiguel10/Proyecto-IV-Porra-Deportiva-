@@ -90,6 +90,7 @@ class Apuestas:
 	def __init__(self):
 
 		# BD Mongo "mongodb+srv://prueba:i3FMWub6otusvSjp@cluster0-yij5h.azure.mongodb.net/admin"
+		# client = pymongo.MongoClient() # MongoDB en local
 		client = pymongo.MongoClient("mongodb+srv://porra:porraIV@cluster0-yij5h.azure.mongodb.net/porradeportiva")
 		db = client.porradeportiva
 		self.apuestas = db.apuestas    # colección
@@ -104,6 +105,17 @@ class Apuestas:
 			usuarios.append(a["usuario"])
 
 		return usuarios
+
+	# Función que borra un usuario
+	def delApostante(self, usuario):
+		try:
+			apst = self.getApostantes()
+			if usuario not in apst: return False # Comprueba que el usuario exista
+			self.apuestas.remove({'usuario':usuario})
+			return True
+		except:
+			return False 
+
 
 	# Función que nos devuelve las apuestas de un usuario
 	def getApuestas(self, usuario):
@@ -121,10 +133,11 @@ class Apuestas:
 
 	# Función que nos devuelve las apuestas de un usuario
 	def setApuestas(self, usuario, partido, resultado):
-
+		apuestas = []
 		try:
-			apuestas = self.getApuestas(usuario)
-			if apuestas:
+			apst = self.getApostantes()
+			if usuario in apst: # Comprueba que el usuario exista
+				apuestas = self.getApuestas(usuario)
 				apuestas.append({partido:resultado})
 				self.apuestas.update({'usuario':usuario},{'usuario':usuario,'apuestas':apuestas})
 			else:
@@ -141,17 +154,21 @@ class Apuestas:
 	def delApuesta(self, usuario):
 		apuestas = []
 		try:
+			apst = self.getApostantes()
+			if usuario not in apst: return False # Comprueba que el usuario exista
 			apuestas = self.getApuestas(usuario)
 			# Si el usuario tiene apuestas
 			if apuestas:
 				apuestas.pop()
 				self.apuestas.update({'usuario':usuario},{'usuario':usuario,'apuestas':apuestas})
 				apuestas = True
-			
+		
 			# El usuario no tiene apuestas pero se realiza bien la operación
 			else:
 				apuestas = True
-
+		
 		except:
 			apuestas = False 
 		return apuestas
+
+	
