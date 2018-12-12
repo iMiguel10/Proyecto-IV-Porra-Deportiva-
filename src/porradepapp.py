@@ -31,7 +31,7 @@ def partidos(n):
     
 @app.route('/partido/<n>/jornada/<jornada>', methods = ['GET'])
 def partido(jornada,n):
-	p=funcionesbasicas.Partidos()
+	p=funcionesbasicasDB.Partidos()
 	datos=[]
 	if request.method == 'GET':
 		datos=p.getPartido(int(n),int(jornada))
