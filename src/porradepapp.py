@@ -16,7 +16,7 @@ def status():
 # Si usas el método delete borra el último partido de la jornada
 @app.route('/jornada/<n>', methods = ['GET','DELETE','PUT'])
 def partidos(n):
-	p=funcionesbasicas.Partidos()
+	p=funcionesbasicasDB.Partidos()
 	datos=[]
 	if request.method == 'PUT':
 		json_data = request.get_json()
@@ -40,7 +40,7 @@ def partido(jornada,n):
 
 @app.route('/apuesta/<usuario>', methods = ['GET'])
 def apuesta(usuario):
-	p=funcionesbasicas.Apuestas()
+	p=funcionesbasicasDB.Apuestas()
 	datos=p.getApuestas(usuario)
 	return jsonify(apuestas=datos)
 
