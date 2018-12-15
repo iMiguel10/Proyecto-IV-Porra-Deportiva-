@@ -1,0 +1,19 @@
+- hosts: porradeportiva
+  sudo: yes
+  remote_user: vagrant
+
+  tasks:
+  - name: Actualizar sistema
+    command: sudo apt-get update
+
+  - name: Instalar Git
+    command: sudo apt-get install -y git
+
+  - name: Instalar pip
+    command: sudo apt-get install -y python3-pip
+
+  - name: Clonar GitHub
+    git: repo=https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-.git  dest=Proyecto-IV-Porra-Deportiva-/ force=yes
+
+  - name: Instalar requirements
+    command: pip3 install -r Proyecto-IV-Porra-Deportiva-/requirements.txt
