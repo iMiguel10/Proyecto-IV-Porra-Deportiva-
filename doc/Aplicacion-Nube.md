@@ -31,7 +31,7 @@ porradeportiva
 
 La orden para la ejecución del script fuera del Vagrantfile es `ansible-playbook playbook.yml`.
 
-![Script Ansible](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-1.PNG)
+![Script Ansible](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-1.png)
 
 ### 2. Creación de la maquina virtual y despliegue de la misma
 ---
@@ -71,17 +71,17 @@ En este fichero como podemos ver se han usado unas reglas específicas para el u
 
 Antes de levantar la máquina virtual es necesario la instalación de un plugin de azure para vagrant.
 
-![Plugin Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-2.PNG)
+![Plugin Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-2.png)
 
 Por otro lado, para la obtención de las variables necesarias para el Vagrantfile ha sido necesario el uso del Azure cli, para ello mostramos a continuación con imágenes el logueo, obtención de datos y creación de un directorio activo de azure.
 
-![Login Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-3.PNG)
-![List Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-4.PNG)
-![AD Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-5.PNG)
+![Login Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-3.png)
+![List Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-4.png)
+![AD Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-5.png)
 
 Una vez hecho todo lo anterior podemos hacer `vagrant up --provider=azure`.
 
-![Vagrant Up](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-6.PNG)
+![Vagrant Up](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-6.png)
 
 Tras este proceso vamos al nuestro portal azure y podemos ver todos los recursos que se han creado automáticamente.
 
