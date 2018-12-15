@@ -23,11 +23,6 @@ def Actualizar():
     # Instalamos requirements
     run('pip3 install -r Proyecto-IV-Porra-Deportiva-/requirements.txt')
 
-def Borrar():
-
-    # Borramos antiguo codigo
-    run('rm -rf Proyecto-IV-Porra-Deportiva-')
-
 
 def Iniciar():
 
