@@ -56,7 +56,7 @@ El entorno se puede descargar con una sola orden de DockerHub:  `docker run -it 
 
 ## Despliegue desde 0 de una aplicación en la nube.
 
-Despliegue final: 104.40.9.222/status
+Despliegue final: 104.40.9.222
 
 Para el despliegue de una aplicación en la nube desde 0, en nuestro caso de Azure, se ha hecho, por así decirlo, en 3 partes, provisionamiento ( con ansible ), creación de una máquina virtual ( con vagrant ) y despliegue ( con fabric ).
 
