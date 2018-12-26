@@ -90,19 +90,37 @@ Tras este proceso vamos al nuestro portal azure y podemos ver todos los recursos
 
 ### 3. Despliegue
 ---
-Para el despliegue es necesario crear un archivo **fabfile.py** en nuestro repositorio, que nos permitirá llavar a cabo ordenes de una manera automatizada a través de ssh.
+Para el despliegue es necesario crear un archivo [**fabfile.py**](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/despliegue/fabfile.py) en nuestro repositorio, que nos permitirá llavar a cabo ordenes de una manera automatizada a través de ssh.
 
 **Mi archivo fabfile.py**  
 
 ~~~
 
 # Fabfile to:
-#    - Borrar el microservicio
-#    - Actualizar el microservicio
-#    - Iniciar el microservicio
+#    - Testear
+#    - Borrar
+#    - Actualizar
+#    - Iniciar
+
+import os
 
 # Import Fabric's API module
 from fabric.api import *
+from fabric.contrib.console import confirm
+
+# Host a los que se conectará
+env.hosts = ['porradeportiva.westus.cloudapp.azure.com']
+
+# Usuario usado 
+env.user = "vagrant"
+env.password = os.environ["PASSWORD"]
+
+
+def Test():
+    with cd("Proyecto-IV-Porra-Deportiva-/test/"):
+        result = run("python3 test.py && pytest")
+        if result.failed and not confirm("Tests failed. Continue anyway?"):
+            abort("TEST fallidos")
 
 def Borrar():
 
@@ -113,27 +131,54 @@ def Borrar():
 def Actualizar():
 
     # Borramos antiguo codigo
-    Borrar
+    Borrar()
 
-    # Descargamos nuevo repositorio
-    run('git clone https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-.git')  
+    # Descargaos el repositorio
+    run("git clone https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-.git")
 
     # Instalamos requirements
     run('pip3 install -r Proyecto-IV-Porra-Deportiva-/requirements.txt')
 
+    # Comprobamos que pasa los test
+    Test()
 
 def Iniciar():
 
-     # Iniciamos el servicio web
-     run('cd Proyecto-IV-Porra-Deportiva-/src/ && sudo gunicorn porradepapp:app -b 0.0.0.0:80')
+    # Iniciamos el servicio web
+    with cd("Proyecto-IV-Porra-Deportiva-/src/"):
+        sudo('gunicorn porradepapp:app -b 0.0.0.0:80 &')
 
 ~~~
 
 Como podemos ver tenemos diferentes funciones en las que hemos definido una serie de posibles ordenes que queremos que se ejecuten en nuestra máquina para borrar, actualizar o iniciar nuestra aplicación.
 
 La orden utilizada para realizar alguna de las funciones de despliegue es:  
-`fab -f despliegue/fabfile.py -H vagrant@porradeportiva.westus.cloudapp.azure.com <función>`
+`fab -f despliegue/fabfile.py -H vagrant@porradeportiva.westus.cloudapp.azure.com <función>`  
+Pero en mi caso es `fab -f despliegue/fabfile.py <función>`, ya que hemos añadido esto:
 
+~~~
+
+# Host a los que se conectará
+env.hosts = ['porradeportiva.westus.cloudapp.azure.com']
+
+# Usuario usado 
+env.user = "vagrant"
+env.password = os.environ["PASSWORD"]
+
+~~~
+
+![Fabfile](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-8.png)  
+![Fabfile](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-9.png)  
+![Fabfile](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-10.png)  
+![Fabfile](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-11.png)  
+
+Información obtenida de:  
+
+* [Fabric Doc](http://docs.fabfile.org/en/1.14/tutorial.html)
+* [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-use-fabric-to-automate-administration-tasks-and-deployments)
+* [Bogotobogo](https://www.bogotobogo.com/python/Fabric/python_Fabric.php)
+* [Tutsplus](https://code.tutsplus.com/tutorials/getting-started-with-the-fabric-python-library--cms-30555)
+* [Python for Beginners](https://www.pythonforbeginners.com/systems-programming/how-to-use-fabric-in-python)
 
 ### 4. Ejemplos
 ---
