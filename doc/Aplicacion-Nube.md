@@ -25,10 +25,13 @@ porradeportiva.westus.cloudapp.azure.com
 
 ~~~
 porradeportiva
-104.40.9.222 
+40.78.6.136 
 
 ~~~
 
+[Provisionamiento](https://www.vagrantup.com/intro/getting-started/provisioning.html)
+
+La orden para la ejecución del script con vagrant es `vagrant provision`.  
 La orden para la ejecución del script fuera del Vagrantfile es `ansible-playbook playbook.yml`.
 
 ![Script Ansible](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-1.png)
@@ -36,56 +39,183 @@ La orden para la ejecución del script fuera del Vagrantfile es `ansible-playboo
 ### 2. Creación de la maquina virtual y despliegue de la misma
 ---
 
-Para la creación y despliegue de la maquina virtual que contendrá nuestra aplicación se ha usado vagrant para la creación y azure para el despliegue, de manera que ha sido necesario la definición de un Vagrantfile:
+Antes de hacer nada es necesario la instalación de un plugin de azure para vagrant, y además añadir la dummy box, esto nos proporcionará una base para nuestra máquina, en nuestro caso será del [proveedor](https://www.vagrantup.com/intro/getting-started/providers.html) azure.
 
-~~~
+![Plugin Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-2.png)
+![Dummy Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-12.png)
 
-Vagrant.configure('2') do |config|
-  config.vm.box = 'azure'
 
-  # use local ssh key to connect to remote vagrant box
+Para la creación y despliegue de la maquina virtual que contendrá nuestra aplicación se ha usado vagrant para la creación y azure para el despliegue, de manera que ha sido necesario la definición de un Vagrantfile, que se ha creado con la siguiente instrucción, `vagrant init vmazure`, tras la adición de la box, ya que es necesario pasarle el nombre que le asignamos al añadirla:
+
+```ruby
+
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://atlas.hashicorp.com/search.
+  config.vm.box = "vmazure"
+
+  # Usamos las claves privadas locales para conectarnos por ssh a la máquina
   config.ssh.private_key_path = '~/.ssh/id_rsa'
-  config.vm.provider :azure do |azure, override|
 
-    # each of the below values will default to use the env vars named as below if not specified explicitly
-    azure.tenant_id = ENV['AZURE_TENANT_ID']
-    azure.client_id = ENV['AZURE_CLIENT_ID']
-    azure.client_secret = ENV['AZURE_CLIENT_SECRET']
-    azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+  # Disable automatic box update checking. If you disable this, then
+  # boxes will only be checked for updates when the user runs
+  # `vagrant box outdated`. This is not recommended.
+  # config.vm.box_check_update = false
 
-    azure.vm_name = 'porradeportiva'
-    azure.vm_size = 'Standard_B1s'
-    azure.tcp_endpoints = '80'
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  # config.vm.network "private_network", ip: "192.168.33.10"
+
+  # Create a public network, which generally matched to bridged network.
+  # Bridged networks make the machine appear as another physical device on
+  # your network.
+  # config.vm.network "public_network"
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+  # config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = true
+  #
+  #   # Customize the amount of memory on the VM:
+  #   vb.memory = "1024"
+  # end
+  #
+  # View the documentation for the provider you are using for more
+  # information on available options.
+
+  config.vm.provider :azure do |vmazure, override|
+
+    # Parámetros de nuestra suscripción necesarios para la creación de la máquina en azure
+    vmazure.tenant_id = ENV['AZURE_TENANT_ID']
+    vmazure.client_id = ENV['AZURE_CLIENT_ID']
+    vmazure.client_secret = ENV['AZURE_CLIENT_SECRET']
+    vmazure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+
+    # Parámteros específicos de la máquina
+    # Asiganamos el nombre de 'porradeportiva' a la máquina virtual
+    vmazure.vm_name = 'porradeportiva'
+    # Asiganamos el tipo de almacenamiento más básico a la máquina, ya que los datos están almacenado en una BD mongo en MongoDB Atlas
+    vmazure.vm_size = 'Standard_B1s'
+    # Especificamos los puertos que vamos a usar, en nuestro caso solo será necesario el 80.
+    vmazure.tcp_endpoints = '80'
+    # Especificamos la imagen que tendremos en nuestra máquina virtual, que por defecto es esta: canonical:ubuntuserver:16.04-LTS:latest
+    vmazure.vm_image_urn = 'canonical:ubuntuserver:16.04-LTS:latest'
+    # Especificamos la localización de nuestra máquina, que por defecto es: westus
+    vmazure.location = 'westus'
 
   end
 
+  # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
+  # such as FTP and Heroku are also available. See the documentation at
+  # https://docs.vagrantup.com/v2/push/atlas.html for more information.
+  # config.push.define "atlas" do |push|
+  #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
+  # end
+
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
+
+  # Provisionamiento con Ansible
   config.vm.provision :ansible do |ansible|
+
       ansible.playbook = "provision/playbook.yml"
+
   end
 
 end
 
+```
+Para la creación de este fichero ha sido necesario añadir la configuración de los parámetros de nuestro proveedor, en nuestro caso, azure.
+En primer lugar se han añadidos los referentes a la suscripción.
+~~~
+vmazure.tenant_id = ENV['AZURE_TENANT_ID']
+vmazure.client_id = ENV['AZURE_CLIENT_ID']
+vmazure.client_secret = ENV['AZURE_CLIENT_SECRET']
+vmazure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
 ~~~
 
-En este fichero como podemos ver se han usado unas reglas específicas para el uso y despliegue de una máquina virtual con [vagrant y azure](https://github.com/Azure/vagrant-azure), de este fichero podemos comentar que se han tenido que exportar variables de entorno para que las claves e identificadores de la suscripción no sean visibles, además de exportarlas se han añadido al archivo */etc/environments* para que se exporten cada vez que se arranque la máquina anfitriona, como segunda cosa a comentar son los parámetros opcionales como el *name, size, tcp_enpoints* que nos han permitido asignarle el nombre de porradeportiva, tamaño y puertos que vamos a necesitar de la máquina virtual alojada en azure, y por última cosa a comentar es la última parte y es en la que se ejecuta el script de provisionamiento descrito en el punto anterior.
-
-Antes de levantar la máquina virtual es necesario la instalación de un plugin de azure para vagrant.
-
-![Plugin Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-2.png)
-
-Por otro lado, para la obtención de las variables necesarias para el Vagrantfile ha sido necesario el uso del Azure cli, para ello mostramos a continuación con imágenes el logueo, obtención de datos y creación de un directorio activo de azure.
+Para la obtención de estas variables ha sido necesario el uso del Azure cli, para ello mostramos a continuación con imágenes el logueo, obtención de datos y creación de un directorio activo de azure.
 
 ![Login Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-3.png)
 ![List Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-4.png)
 ![AD Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-5.png)
 
-Una vez hecho todo lo anterior podemos hacer `vagrant up --provider=azure`.
+En segundo lugar se han añadido los referentes a los parámetros específicos a la vm.
+~~~
+# Asiganamos el nombre de 'porradeportiva' a la máquina virtual
+vmazure.vm_name = 'porradeportiva'
+# Asiganamos el tipo de almacenamiento más básico a la máquina, para nuestro servicio no es necesario uno mayor. [Tamaño de maquinas virtuales](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/sizes?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json)  
+vmazure.vm_size = 'Standard_B1s'
+# Especificamos los puertos que vamos a usar, en nuestro caso solo será necesario el 80.
+vmazure.tcp_endpoints = '80'
+# Especificamos la imagen que tendremos en nuestra vm, las que nos ofrece azure son: [Selección de imágenes para máquinas virtuales](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json)
+# Se ha elegido esta imagen porque las pruebas del servicio se han hecho sobre Ubuntu y la última versión del 16 porque es de las pocas 
+# que nos ofrece azure para este SO.
+vmazure.vm_image_urn = 'canonical:ubuntuserver:16.04-LTS:latest'
+# Especificamos la localización de nuestra máquina.
+vmazure.location = 'westus'
+~~~
+
+Por último se ha añadido el provisionamiento con un script de Ansible.
+~~~
+
+  # Provisionamiento con Ansible
+  config.vm.provision :ansible do |ansible|
+
+      ansible.playbook = "provision/playbook.yml"
+
+  end
+
+~~~
+
+Una vez hecho todo lo anterior podemos levantar la máquina `vagrant up --provider=azure`.
 
 ![Vagrant Up](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-6.png)
 
 Tras este proceso vamos al nuestro portal azure y podemos ver todos los recursos que se han creado automáticamente.
 
 ![Portal Azure](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/img/aplicacion-nube-7.PNG)
+
+Información obtenida de:  
+
+* [Scottlowe](https://blog.scottlowe.org/2017/12/11/using-vagrant-with-azure/)
+* [Azure Microsoft](https://azure.microsoft.com/es-es/resources/videos/azure-virtual-machine-creation-and-set-up-using-vagrant-with-corey-fowler/)
+* [Returngis](https://www.returngis.net/2015/11/usa-vagrant-con-microsoft-azure/)
+* [Ruby Doc](https://www.rubydoc.info/gems/vagrant-azure/1.3.0)
+* [Linkedin](https://www.linkedin.com/pulse/azure-devops-vagrant-joão-pedro-soares)
+* [Vagrant Azure](https://github.com/Azure/vagrant-azure)
+* [Alberto Romeu](https://albertoromeu.com/vagrant-desde-cero/)
+* [Adicto al Trabajo](https://www.adictosaltrabajo.com/2014/02/12/vagrant-install/)
 
 
 ### 3. Despliegue
@@ -185,7 +315,7 @@ Información obtenida de:
 
 Para ver el estado de la máquina podemos acceder a través de:
 
-- **IP pública:** 104.40.9.222
+- **IP pública:** 40.78.6.136
 - **DNS:**  porradeportiva.westus.cloudapp.azure.com 
 
 Para ver las rutas activas se puede ver la api que ofrece: [porradepapp.py](https://github.com/iMiguel10/Proyecto-IV-Porra-Deportiva-/blob/master/src/porradepapp.py).
