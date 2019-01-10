@@ -119,15 +119,15 @@ Vagrant.configure("2") do |config|
     # Parámteros específicos de la máquina
     # Asiganamos el nombre de 'porradeportiva' a la máquina virtual
     vmazure.vm_name = 'porradeportiva'
-    # Asiganamos el tipo de almacenamiento más básico a la máquina, ya que los datos están almacenado en una BD mongo en MongoDB Atlas
+    # Asiganamos el tipo de almacenamiento más básico a la máquina, para nuestro servicio no es necesario uno mayor.  
     vmazure.vm_size = 'Standard_B1s'
     # Especificamos los puertos que vamos a usar, en nuestro caso solo será necesario el 80.
     vmazure.tcp_endpoints = '80'
-    # Especificamos la imagen que tendremos en nuestra máquina virtual, que por defecto es esta: canonical:ubuntuserver:16.04-LTS:latest
+    # Especificamos la imagen que tendremos en nuestra vm. Se ha elegido esta imagen porque las pruebas del 
+    # servicio se han hecho sobre Ubuntu y la última versión del 16 porque es de las pocas que nos ofrece azure para este SO.
     vmazure.vm_image_urn = 'canonical:ubuntuserver:16.04-LTS:latest'
-    # Especificamos la localización de nuestra máquina, que por defecto es: westus
+    # Especificamos la localización de nuestra máquina.
     vmazure.location = 'westus'
-
   end
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
@@ -172,19 +172,27 @@ Para la obtención de estas variables ha sido necesario el uso del Azure cli, pa
 
 En segundo lugar se han añadido los referentes a los parámetros específicos a la vm.
 ~~~
+
 # Asiganamos el nombre de 'porradeportiva' a la máquina virtual
 vmazure.vm_name = 'porradeportiva'
-# Asiganamos el tipo de almacenamiento más básico a la máquina, para nuestro servicio no es necesario uno mayor. [Tamaño de maquinas virtuales](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/sizes?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json)  
+
+# Asiganamos el tipo de almacenamiento más básico a la máquina, para nuestro servicio no es necesario uno mayor.  
 vmazure.vm_size = 'Standard_B1s'
+
 # Especificamos los puertos que vamos a usar, en nuestro caso solo será necesario el 80.
 vmazure.tcp_endpoints = '80'
-# Especificamos la imagen que tendremos en nuestra vm, las que nos ofrece azure son: [Selección de imágenes para máquinas virtuales](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json)
-# Se ha elegido esta imagen porque las pruebas del servicio se han hecho sobre Ubuntu y la última versión del 16 porque es de las pocas 
-# que nos ofrece azure para este SO.
+
+# Especificamos la imagen que tendremos en nuestra vm. Se ha elegido esta imagen porque las pruebas del 
+# servicio se han hecho sobre Ubuntu y la última versión del 16 porque es de las pocas que nos ofrece azure para este SO.
 vmazure.vm_image_urn = 'canonical:ubuntuserver:16.04-LTS:latest'
+
 # Especificamos la localización de nuestra máquina.
 vmazure.location = 'westus'
+
 ~~~
+
+Las imágenes que nos ofrece azure son: [Selección de imágenes para máquinas virtuales](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/cli-ps-findimage?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json)
+[Tamaño de maquinas virtuales](https://docs.microsoft.com/es-es/azure/virtual-machines/linux/sizes?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) 
 
 Por último se ha añadido el provisionamiento con un script de Ansible.
 ~~~
